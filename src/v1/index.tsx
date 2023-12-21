@@ -9,9 +9,7 @@ import { FieldMeta, FormContext, FormContextValue, Store } from "./fromContext";
 import { FormAction, InternalFormAction, useForm } from "./useForm";
 
 export interface FormProps {
-  /**
-   * ## 表单的初始值
-   */
+  /** ## 表单的初始值 */
   initialValues?: Store;
 
   onFieldsChange?: (options: {
@@ -22,12 +20,6 @@ export interface FormProps {
 
   form: FormAction;
 }
-
-// export function Form:React.FC<FormProps>()  {
-//   return props => {
-//     return <div>{props.children}</div>;
-//   };
-// }
 
 const Form: React.FC<FormProps> = ({
   initialValues,
@@ -57,7 +49,6 @@ const Form: React.FC<FormProps> = ({
       fieldsStore,
       /**
        * ## 修改表单项
-       * @param fields
        */
       setFields(fields) {
         const newStore = {
@@ -76,6 +67,9 @@ const Form: React.FC<FormProps> = ({
   const defaultForm = useForm();
   const form = (formProp || defaultForm) as InternalFormAction;
 
+  // useImperativeHandle 自定义由ref暴露出来的句柄
+  // 类似于 vue 中的defineExpose, 但是需要增加ref
+  // 给 form 中的ref 绑定 getFields 和 setFields 的方法
   useImperativeHandle(
     form.__INTERNAL__,
     () => ({
