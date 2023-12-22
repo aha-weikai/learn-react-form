@@ -1,4 +1,6 @@
 import Form from "./v1";
+import { Field } from "./v1/Field";
+import { Input } from "./v1/Input";
 import { useForm } from "./v1/useForm";
 
 export function FormV1() {
@@ -10,9 +12,11 @@ export function FormV1() {
       formV1
       <Form form={form}>
         {/* 在内部使用 React.cloneElement 为input 绑定value 和 onChange */}
-        {/* <Field name="foo">
-          <input />
-        </Field> */}
+        <Field name="foo">
+          {/* <input /> */}
+          {/* 123 */}
+          <Input></Input>
+        </Field>
         <button
           onClick={() => {
             form.setFields([{ name: "foo", value: "foo" }]);

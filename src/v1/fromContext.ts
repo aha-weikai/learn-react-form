@@ -8,13 +8,9 @@ export interface FieldMeta {
 }
 
 export interface FormContextValue {
-  /**
-   * ## context 内保存的每一个表单项值的方法
-   */
+  /** ## context 内保存的每一个表单项值的方法 */
   fieldsStore: Store;
-  /**
-   * ## context 内下发如何修改表单项值的方法
-   */
+  /** ## context 内下发如何修改表单项值的方法 */
   setFields: (fields: FieldMeta[]) => void;
 }
 
